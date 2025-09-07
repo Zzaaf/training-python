@@ -1,0 +1,23 @@
+# Простой пример
+graph = {
+    "A": ["B", "C"],
+    "B": ["D"],
+    "C": ["E"],
+    "D": [],
+    "E": []
+}
+
+# Сложный пример: поиск в ширину (BFS)
+from collections import deque
+
+def bfs(graph, start):
+    visited = set()
+    queue = deque([start])
+    while queue:
+        node = queue.popleft()
+        if node not in visited:
+            print(node)
+            visited.add(node)
+            queue.extend(graph[node])
+
+bfs(graph, "A")
